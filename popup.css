@@ -1,0 +1,6 @@
+body { font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif; width: 250px; padding: 10px; text-align: center; }
+button { padding: 10px 15px; margin-top: 10px; cursor: pointer; width: 90%; }
+#status { margin-top: 10px; font-size: 0.9em; }
+#openOptions { font-size: 0.8em; }
+label { font-size: 13px; }
+#cookiesPreview { font-size: 12px; }

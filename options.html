@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CookieVault Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <h1>CookieVault Settings</h1>
+  
+  <div>
+    <label for="apiUrl">CloudPaste API Base URL:</label>
+    <input type="url" id="apiUrl" placeholder="e.g., https://your.cloudpaste.server">
+    <div style="font-size:12px;color:#888;">Should be like: <b>https://your.cloudpaste.server</b> (no /api/user/fs, no trailing slash)</div>
+  </div>
+
+  <div>
+    <label for="apiKey">CloudPaste API Key:</label>
+    <input type="password" id="apiKey"> 
+  </div>
+
+  <div>
+    <label for="basePath">Base Path for Cookies on CloudPaste:</label>
+    <input type="text" id="basePath" placeholder="e.g., /cookies (leading slash important)">
+    <div style="font-size:12px;color:#888;">Will be used as the path param in upload-direct API, e.g. <b>/cookies</b></div>
+  </div>
+
+  <button id="save">Save Settings</button>
+  <p id="status"></p>
+
+  <script src="options.js"></script>
+</body>
+</html>
