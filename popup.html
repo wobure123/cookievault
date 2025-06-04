@@ -9,6 +9,12 @@
   <h3>CookieVault</h3>
   <p id="domainInfo">当前域名: <span id="currentDomain">N/A</span></p>
   <div id="cookiesPreview" style="max-height:150px;overflow:auto;border:1px solid #eee;padding:5px;margin-bottom:10px;display:none;"></div>
+  
+  <p>
+    <label for="slugInput">自定义下载短链(slug)：</label>
+    <input type="text" id="slugInput" placeholder="留空则用默认域名" style="width:140px;">
+  </p>
+  
   <button id="exportCookies">导出选中Cookies到CloudPaste</button>
   <p id="status"></p>
   <p><a href="#" id="openOptions">设置</a></p>

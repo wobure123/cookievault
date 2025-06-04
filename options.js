@@ -35,13 +35,11 @@ saveButton.addEventListener('click', () => {
     return;
   }
 
-  // Ensure basePath starts with a slash and doesn't end with one (unless it's just "/")
+  // 只确保 basePath 以斜杠开头，不再去除末尾斜杠
   if (!basePath.startsWith('/')) {
     basePath = '/' + basePath;
   }
-  if (basePath.length > 1 && basePath.endsWith('/')) {
-    basePath = basePath.slice(0, -1);
-  }
+  // 不再去除末尾斜杠，保留用户输入
 
   chrome.storage.sync.set({
     cloudpasteApiUrl: apiUrl,

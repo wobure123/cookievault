@@ -51,6 +51,14 @@ exportButton.addEventListener('click', async () => {
     statusP.style.color = 'red';
     return;
   }
+  // 获取 slug 输入
+  const slugInput = document.getElementById('slugInput');
+  let slug = '';
+  if (slugInput && slugInput.value.trim()) {
+    slug = slugInput.value.trim().replace(/[^a-zA-Z0-9_-]/g, ''); // 只允许字母数字下划线和横杠
+  } else {
+    slug = activeTabDomain.replace(/\./g, '-');
+  }
   statusP.textContent = 'Exporting...';
   statusP.style.color = 'orange';
   exportButton.disabled = true;
@@ -59,9 +67,10 @@ exportButton.addEventListener('click', async () => {
     const settings = await new Promise(resolve => chrome.storage.sync.get(['cloudpasteApiUrl', 'cloudpasteApiKey', 'cloudpasteBasePath'], resolve));
     const { cloudpasteApiUrl, cloudpasteApiKey, cloudpasteBasePath } = settings;
     const fileName = `${activeTabDomain}.json`;
-    const path = cloudpasteBasePath || '/cookies';
+    const path = cloudpasteBasePath || '/cookies/';
     // 拼接路径时不要多余斜杠，且 path 不能带文件名
-    const uploadUrl = `${cloudpasteApiUrl.replace(/\/$/, '')}/api/upload-direct/${encodeURIComponent(fileName)}?path=${encodeURIComponent(path)}&override=true&original_filename=true`;
+    // 增加 slug 查询参数
+    const uploadUrl = `${cloudpasteApiUrl.replace(/\/$/, '')}/api/upload-direct/${encodeURIComponent(fileName)}?path=${encodeURIComponent(path)}&slug=${encodeURIComponent(slug)}&override=true&original_filename=true`;
     const cookieData = {
       source: "CookieVaultExtension",
       domain: activeTabDomain,
